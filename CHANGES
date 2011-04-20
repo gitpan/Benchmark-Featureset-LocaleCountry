@@ -1,4 +1,9 @@
 Revision history for Perl extension Benchmark::Featureset::LocaleCountry.
 
+1.01  Tue Apr 19 17:20:00 2011
+	- Make Build.PL and Makefile.PL run scripts/copy.config.pl.
+	- Expand docs to discuss config/.htbenchmark.featureset.localecountry.conf, and scripts/copy.config.pl.
+	  This section was missing from the docs in V 1.00.
+
 1.00  Mon Apr 18 15:38:35 2011
-	  - Original version
+	- Original version

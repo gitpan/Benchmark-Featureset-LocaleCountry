@@ -47,11 +47,11 @@
    "provides" : {
       "Benchmark::Featureset::Locale::SubCountry::Util::Config" : {
          "file" : "lib/Benchmark/Featureset/Util/Config.pm",
-         "version" : "1.00"
+         "version" : "1.01"
       },
       "Benchmark::Featureset::LocaleCountry" : {
          "file" : "lib/Benchmark/Featureset/LocaleCountry.pm",
-         "version" : "1.00"
+         "version" : "1.01"
       }
    },
    "release_status" : "stable",
@@ -60,5 +60,5 @@
          "http://opensource.org/licenses/artistic-license.php"
       ]
    },
-   "version" : "1.00"
+   "version" : "1.01"
 }

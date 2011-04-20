@@ -3,9 +3,10 @@
 use strict;
 use warnings;
 
-use Benchmark::Featureset::LocaleCountry::Util::Config;
-
 use File::Copy;
+use File::HomeDir;
+
+use Path::Class;
 
 # ----------------------------------------
 
