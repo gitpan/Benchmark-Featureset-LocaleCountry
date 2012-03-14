@@ -8,19 +8,19 @@ build_requires:
 configure_requires:
   Module::Build: 0.38
 dynamic_config: 1
-generated_by: 'Module::Build version 0.38, CPAN::Meta::Converter version 2.110580'
+generated_by: 'Module::Build version 0.4, CPAN::Meta::Converter version 2.120630'
 license: artistic
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: Benchmark-Featureset-LocaleCountry
 provides:
-  Benchmark::Featureset::Locale::SubCountry::Util::Config:
-    file: lib/Benchmark/Featureset/Util/Config.pm
-    version: 1.01
   Benchmark::Featureset::LocaleCountry:
     file: lib/Benchmark/Featureset/LocaleCountry.pm
-    version: 1.01
+    version: 1.02
+  Benchmark::Featureset::LocaleCountry::Config:
+    file: lib/Benchmark/Featureset/LocaleCountry/Config.pm
+    version: 1.02
 requires:
   Config::Tiny: 2.13
   Date::Simple: 3.03
@@ -38,4 +38,4 @@ requires:
   Text::Xslate: 1.0007
 resources:
   license: http://opensource.org/licenses/artistic-license.php
-version: 1.01
+version: 1.02

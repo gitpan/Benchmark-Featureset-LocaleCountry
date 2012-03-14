@@ -3,7 +3,7 @@ package Benchmark::Featureset::LocaleCountry;
 use strict;
 use warnings;
 
-use Benchmark::Featureset::LocaleCountry::Util::Config;
+use Benchmark::Featureset::LocaleCountry::Config;
 
 use Date::Simple;
 
@@ -20,7 +20,7 @@ use Set::Array;
 
 use Text::Xslate 'mark_raw';
 
-our $VERSION = '1.01';
+our $VERSION = '1.02';
 
 # ------------------------------------------------
 
@@ -411,7 +411,7 @@ sub new
 sub run
 {
 	my($self)                                         = @_;
-	my($config)                                       = Benchmark::Featureset::LocaleCountry::Util::Config -> new -> config;
+	my($config)                                       = Benchmark::Featureset::LocaleCountry::Config -> new -> config;
 	my($templater)                                    = $self -> build_templater($config);
 	my($common_countries, $module_data, $module_list) = $self -> build_module_data;
 	my($country_name_count)                           = $self -> build_country_data($module_data);
@@ -442,7 +442,7 @@ sub run
 
 =head1 NAME
 
-L<Benchmark::Featureset::LocaleCountry> - Compare Locale::Codes, Locale::Country::Multilingual, Locale::Country::SubCountry, etc
+Benchmark::Featureset::LocaleCountry - Compare Locale::Codes, Locale::Country::Multilingual, Locale::Country::SubCountry, etc
 
 =head1 Synopsis
 
@@ -613,7 +613,7 @@ This is for outputting. It contains the modules' names and links to CPAN.
 
 Returns an arrayref of stuff about the purpose of this module.
 
-=head build_templater()
+=head2 build_templater()
 
 Returns an object of type Text::Xslate.
 

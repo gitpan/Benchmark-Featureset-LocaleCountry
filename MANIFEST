@@ -10,7 +10,7 @@ htdocs/assets/templates/benchmark/featureset/localecountry/basic.table.tx
 htdocs/assets/templates/benchmark/featureset/localecountry/fancy.table.tx
 htdocs/assets/templates/benchmark/featureset/localecountry/locale.report.tx
 lib/Benchmark/Featureset/LocaleCountry.pm
-lib/Benchmark/Featureset/Util/Config.pm
+lib/Benchmark/Featureset/LocaleCountry/Config.pm
 Makefile.PL
 MANIFEST			This list of files
 META.json

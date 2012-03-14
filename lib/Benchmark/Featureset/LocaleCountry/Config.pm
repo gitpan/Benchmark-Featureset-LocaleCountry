@@ -1,4 +1,4 @@
-package Benchmark::Featureset::Locale::SubCountry::Util::Config;
+package Benchmark::Featureset::LocaleCountry::Config;
 
 use strict;
 use warnings;
@@ -15,7 +15,7 @@ fieldhash my %config           => 'config';
 fieldhash my %config_file_path => 'config_file_path';
 fieldhash my %section          => 'section';
 
-our $VERSION = '1.01';
+our $VERSION = '1.02';
 
 # -----------------------------------------------
 
@@ -36,7 +36,7 @@ sub new
 
 	$self -> init(\%arg);
 
-	my($path) = Path::Class::file(File::HomeDir -> my_dist_config('Locale-Country-SubCountry'), '.htlocale.country.subcountry.conf');
+	my($path) = Path::Class::file(File::HomeDir -> my_dist_config('Benchmark-Featureset-LocaleCountry'), '.htbenchmark.featureset.localecountry.conf');
 
 	$self -> read($path);
 
@@ -91,7 +91,7 @@ sub read
 
 =head1 NAME
 
-L<Benchmark::Featureset::LocaleCountry::Util::Config> - Compare Locale::Codes, Locale::Country::Multilingual, Locale::Country::SubCountry, etc
+Benchmark::Featureset::LocaleCountry::Config - Compare Locale::Codes, Locale::Country::Multilingual, Locale::Country::SubCountry, etc
 
 =head1 Synopsis
 
