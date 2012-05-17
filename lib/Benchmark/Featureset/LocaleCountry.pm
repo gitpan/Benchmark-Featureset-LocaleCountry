@@ -9,18 +9,18 @@ use Date::Simple;
 
 use Locale::Country ();
 use Locale::Country::Multilingual {use_io_layer => 1};
-use Locale::Country::SubCountry;
 use Locale::Geocode ();
 use Locale::Geocode::Territory ();
 use Locale::Object;
 use Locale::Object::DB ();
 use Locale::SubCountry ();
+use WWW::Scraper::Wikipedia::ISO3166::Database;
 
 use Set::Array;
 
 use Text::Xslate 'mark_raw';
 
-our $VERSION = '1.02';
+our $VERSION = '1.03';
 
 # ------------------------------------------------
 
@@ -239,6 +239,7 @@ sub build_mismatched_divisions
 sub build_module_data
 {
 	my($self)         = @_;
+	my($iso3166)      = WWW::Scraper::Wikipedia::ISO3166::Database -> new -> read_countries_table;
 	my($multilingual) = Locale::Country::Multilingual -> new;
 	my($world)        = Locale::SubCountry::World -> new;
 	my(%module_data)  =
@@ -260,15 +261,6 @@ sub build_module_data
 			 division_names => {},
 			 last_update    => '2009-04-15',
 			 version        => $Locale::Country::Multilingual::VERSION,
-		 },
-		 'Locale::Country::SubCountry' =>
-		 {
-			 country_count  => 0,
-			 country_names  => Set::Array -> new(map{$$_{name} } @{Locale::Country::SubCountry -> new -> all_countries}),
-			 division_count => {},
-			 division_names => {},
-			 last_update    => '2011-04-18',
-			 version        => $Locale::Country::SubCountry::VERSION,
 		 },
 		 'Locale::Geocode' =>
 		 {
@@ -297,12 +289,21 @@ sub build_module_data
 			 last_update    => '2011-04-06',
 			 version        => $Locale::SubCountry::VERSION,
 		 },
+		 'WWW::Scraper::Wikipedia::ISO3166' =>
+		 {
+			 country_count  => 0,
+			 country_names  => Set::Array -> new(map{$$iso3166{$_}{name} } keys %$iso3166),
+			 division_count => {},
+			 division_names => {},
+			 last_update    => '2012-05-16',
+			 version        => $WWW::Scraper::Wikipedia::ISO3166::VERSION,
+		 },
 		);
 
 	# Get the country names common to those modules which provide them.
 
 	my($common_countries) = Set::Array -> new(sort @{$module_data{'Locale::Codes'}{country_names} -> intersection($module_data{'Locale::Country::Multilingual'}{country_names})});
-	$common_countries     = Set::Array -> new(sort @{$common_countries -> intersection($module_data{'Locale::Country::SubCountry'}{country_names})});
+	$common_countries     = Set::Array -> new(sort @{$common_countries -> intersection($module_data{'WWW::Scraper::Wikipedia::ISO3166'}{country_names})});
 	$common_countries     = Set::Array -> new(sort @{$common_countries -> intersection($module_data{'Locale::SubCountry'}{country_names})});
 
 	# Use the common names for Locale::Geocode, since we want its territory names.
@@ -442,7 +443,7 @@ sub run
 
 =head1 NAME
 
-Benchmark::Featureset::LocaleCountry - Compare Locale::Codes, Locale::Country::Multilingual, Locale::Country::SubCountry, etc
+Benchmark::Featureset::LocaleCountry - Compare Locale::Codes, Locale::Country::Multilingual, WWW::Scraper::Wikipedia::ISO3166, etc
 
 =head1 Synopsis
 
@@ -473,13 +474,13 @@ L<Benchmark::Featureset::LocaleCountry> compares some features of various module
 
 =item o L<Locale::Country::Multilingual>
 
-=item o L<Locale::Country::SubCountry>
-
 =item o L<Locale::Geocode>
 
 =item o L<Locale::Object>
 
 =item o L<Locale::SubCountry>
+
+=item o L<WWW::Scraper::Wikipedia::ISO3166>
 
 =back
 

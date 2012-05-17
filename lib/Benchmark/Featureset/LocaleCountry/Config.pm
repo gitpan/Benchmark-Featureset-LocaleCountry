@@ -15,7 +15,7 @@ fieldhash my %config           => 'config';
 fieldhash my %config_file_path => 'config_file_path';
 fieldhash my %section          => 'section';
 
-our $VERSION = '1.02';
+our $VERSION = '1.03';
 
 # -----------------------------------------------
 
@@ -91,7 +91,7 @@ sub read
 
 =head1 NAME
 
-Benchmark::Featureset::LocaleCountry::Config - Compare Locale::Codes, Locale::Country::Multilingual, Locale::Country::SubCountry, etc
+Benchmark::Featureset::LocaleCountry::Config - Compare Locale::Codes, Locale::Country::Multilingual, WWW::Scraper::Wikipedia::ISO3166, etc
 
 =head1 Synopsis
 
@@ -121,7 +121,7 @@ If the file can't be read, die is called.
 
 The path to the config file is determined by:
 
-	Path::Class::file(File::HomeDir -> my_dist_config('Locale-Country-SubCountry'), '.htlocale.country.subcountry.conf');
+	Path::Class::file(File::HomeDir -> my_dist_config('Benchmark-Featureset-LocaleCountry'), '.htbenchmark.featureset.localecountry.conf');
 
 During installation, you should have run scripts/copy.config.pl, which uses the same code, to move the config file
 from the config/ directory in the disto into an OS-dependent directory.
